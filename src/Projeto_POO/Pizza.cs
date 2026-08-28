@@ -50,7 +50,7 @@ namespace XulambsFoods {
         #endregion
 
         #region acesso
-        public static int GetQtdVendida() {
+        public static int GetQuantidadeVendida() {
             return s_pizzasVendidas;
         }
         #endregion
