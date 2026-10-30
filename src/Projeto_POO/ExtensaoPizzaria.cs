@@ -34,5 +34,23 @@ namespace XulambsFoods {
                 _ => 0
             };
         }
+
+        public static double Valor(this ESobremesa tipo) {
+            return tipo switch {
+                ESobremesa.Brigadeiro => 8,
+                ESobremesa.Pudim => 10,
+                ESobremesa.DoceDeLeite=> 9,
+                _ => throw new ArgumentException("Tipo inválido")
+            };
+        }
+
+        public static string Nome(this ESobremesa tipo) {
+            return tipo switch {
+                ESobremesa.Brigadeiro => "Brigadeiro de colher",
+                ESobremesa.Pudim => "Pudim de leite condensado",
+                ESobremesa.DoceDeLeite => "Doce de leite no pires",
+                _ => throw new ArgumentException("Tipo inválido")
+            };
+        }
     }
 }

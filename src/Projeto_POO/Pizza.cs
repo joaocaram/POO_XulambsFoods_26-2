@@ -3,7 +3,7 @@ using System.Text;
 
 
 namespace XulambsFoods {    
-    public class Pizza {
+    public class Pizza : Produto {
 
         /// <summary>
         /// Lembre-se:
@@ -83,7 +83,7 @@ namespace XulambsFoods {
         #endregion
 
         #region métodos públicos
-        public double CalcularValorFinal() {
+        public override double CalcularValorFinal() {
             return PrecoBase + ValorAdicionais() + _borda.Valor();
         }
 
@@ -112,14 +112,14 @@ namespace XulambsFoods {
         /// </summary>
         /// <returns>String com os dados acima</returns>
         public override string ToString() {
-            StringBuilder cupom = new StringBuilder("Xulambs Pizza!!!\n");
-            cupom.AppendLine("================");
+            StringBuilder cupom = new StringBuilder();
+            
             cupom.AppendLine($"{_descricao} com borda {_borda}");
             cupom.AppendLine($"\tPizza: {PrecoBase:C2}");
             cupom.AppendLine($"\t{_quantIngredientes} adicionais: {ValorAdicionais():C2}");
             cupom.AppendLine($"\tBorda {_borda}: {_borda.Valor():C2}");
 
-            cupom.AppendLine($"TOTAL: {CalcularValorFinal():C2}");
+            cupom.AppendLine($"\n\tVALOR: {CalcularValorFinal():C2}");
             cupom.Append("================");
             return cupom.ToString();
         }

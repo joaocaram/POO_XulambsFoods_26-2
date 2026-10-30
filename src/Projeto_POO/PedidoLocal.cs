@@ -19,7 +19,7 @@ namespace XulambsFoods {
         protected override string RodapePedido() {
             StringBuilder relat = new StringBuilder();
             relat.AppendLine($"SERVIÇO (10%) : {TaxaServico():C2}");
-            relat.AppendLine($"\nTOTAL DO PEDIDO: {PrecoAPagar():C2}");
+            relat.Append($"TOTAL DO PEDIDO: {PrecoAPagar():C2}");
             return relat.ToString();
         }
     }

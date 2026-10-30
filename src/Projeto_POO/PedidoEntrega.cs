@@ -23,7 +23,7 @@ namespace XulambsFoods {
 
         protected override void PodeAdicionar() { //override: modificação da regra original
             base.PodeAdicionar();
-            if (_pizzas.Count == MaxEntrega)
+            if (_produtos.Count == MaxEntrega)
                 throw new PedidoCheioException(this);
         }
 
@@ -39,7 +39,7 @@ namespace XulambsFoods {
         {
             StringBuilder relat = new StringBuilder();
             relat.AppendLine($"TAXA DE ENTREGA: {ValorTaxa():C2} ({_distanciaEntrega}km).");
-            relat.AppendLine($"\nTOTAL DO PEDIDO: {PrecoAPagar():C2}");
+            relat.Append($"TOTAL DO PEDIDO: {PrecoAPagar():C2}");
             return relat.ToString();
         }
     }

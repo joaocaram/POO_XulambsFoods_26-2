@@ -7,7 +7,7 @@ namespace XulambsFoods
     public class XulambsApp
     {
         static LinkedList<Pedido> pedidos;
-        static string versao = "0.42";
+        static string versao = "0.5";
 
         #region utilidades
         static void Pausa()
@@ -59,6 +59,33 @@ namespace XulambsFoods
             
             return LerInteiro();
         }
+
+        static int MenuProdutos() {
+            Cabecalho();
+            Console.WriteLine("Quer comprar o quê?");
+            StringBuilder menu = new StringBuilder();
+            menu.AppendLine("1 - Pizzas");
+            menu.AppendLine("2 - Sobremesas");
+            menu.AppendLine("0 - Desistir");
+            menu.Append("Sua opção: ");
+            Console.Write(menu.ToString());
+
+            return LerInteiro();
+        }
+
+        static int MenuSobremesas() {
+            Cabecalho();
+            Console.WriteLine("Escolha sua sobremesa");
+            StringBuilder menu = new StringBuilder();
+            menu.AppendLine("1 - Brigadeiro de Colher");
+            menu.AppendLine("2 - Pudim de Leite Condensado");
+            menu.AppendLine("3 - Doce de Leite no Pires");
+            menu.AppendLine("0 - Desistir");
+            menu.Append("Sua opção: ");
+            Console.Write(menu.ToString());
+
+            return LerInteiro();
+        }
         #endregion
 
         #region relatorios
@@ -91,6 +118,15 @@ namespace XulambsFoods
 
             pizza.AdicionarBorda(borda);
         }
+        #endregion
+
+        #region sobremesa
+        static Produto ComprarSobremesa() {
+            int opcao = MenuSobremesas();
+            ESobremesa tipo = Enum.GetValues<ESobremesa>()[opcao - 1];
+            return new Sobremesa(tipo);
+        }
+
         #endregion
 
         #region pizza
@@ -128,6 +164,19 @@ namespace XulambsFoods
         }
         #endregion
 
+        #region produto
+        static Produto ComprarProduto() {
+            int opcao = MenuProdutos();
+            return opcao switch {
+                1 => ComprarPizza(),
+                2 => ComprarSobremesa(),
+                _ => null
+            };
+
+        }
+
+        #endregion
+
         #region pedido
 
         static PedidoEntrega CriarPedidoEntrega()
@@ -158,9 +207,9 @@ namespace XulambsFoods
             Pedido novoPedido = EscolherTipoPedido();
             do
             {
-                Pizza novaPizza = ComprarPizza();
-                novoPedido.Adicionar(novaPizza);
-                Console.Write("\n\nMais pizza? ");
+                Produto produto = ComprarProduto();
+                novoPedido.Adicionar(produto);
+                Console.Write("\n\nAlgo mais (s/n)? ");
                 resp = Console.ReadLine();
             } while (resp.ToLower().Equals("s"));
 
