@@ -165,7 +165,9 @@ namespace XulambsFoods
         #endregion
 
         #region produto
-        static Produto ComprarProduto() {
+        static Produto? ComprarProduto() {
+            Pizza p;
+            
             int opcao = MenuProdutos();
             return opcao switch {
                 1 => ComprarPizza(),

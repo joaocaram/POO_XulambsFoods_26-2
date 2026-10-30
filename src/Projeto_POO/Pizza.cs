@@ -83,7 +83,7 @@ namespace XulambsFoods {
         #endregion
 
         #region métodos públicos
-        public override double CalcularValorFinal() {
+        public double CalcularValorFinal() {
             return PrecoBase + ValorAdicionais() + _borda.Valor();
         }
 
@@ -105,7 +105,6 @@ namespace XulambsFoods {
             return _quantIngredientes;
         }
 
-    
         /// <summary>
         /// Gera o cupom de venda da pizza. O cupom contém a descrição com a quantidade de adicionais,
         /// o valor base, o valor dos adicionais e o valor total a pagar.
@@ -133,6 +132,5 @@ namespace XulambsFoods {
          *                        _descricao<---------------------/
          */
         #endregion
-
     }
 }

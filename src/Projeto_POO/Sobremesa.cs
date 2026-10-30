@@ -12,7 +12,7 @@ namespace XulambsFoods {
             _tipo = tipo;
         }
 
-        public override double CalcularValorFinal() {
+        public double CalcularValorFinal() {
             return _tipo.Valor();
         }
 

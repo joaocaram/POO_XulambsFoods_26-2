@@ -33,7 +33,7 @@ namespace XulambsFoods {
 
         public int Adicionar(Produto produto) {
             if (produto == null)
-                throw new ArgumentNullException("Pizza não foi criada");
+                throw new ArgumentNullException("Produto não foi escolhido");
 
             PodeAdicionar();
             _produtos.AddLast(produto);
@@ -71,8 +71,6 @@ namespace XulambsFoods {
         }
 
         protected abstract string RodapePedido();
-        
-
         
         public override string ToString() {
             return $"{CabecalhoPedido()}\n{RodapePedido()}";
